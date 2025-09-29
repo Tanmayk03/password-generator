@@ -1,0 +1,78 @@
+# PyPassword Generator
+
+A simple **Password Generator Web App** built with **Python Flask**.  
+Generate secure passwords with letters, numbers, and symbols. You can also choose to shuffle characters for a harder password.
+
+---
+
+## 🔗 Live Demo
+
+[Click here to try the app](https://password-generator-git-main-tanmays-projects-0858f5c5.vercel.app)
+
+---
+
+## 🖥 Screenshots
+
+**Main Page**
+
+![Main Page](./screenshots/main_page.png)
+
+**Generated Password**
+
+![Generated Password](./screenshots/generated_password.png)
+
+> *Note: Replace the above images with your actual screenshots saved in the `screenshots/` folder.*
+
+---
+
+## ⚙ Features
+
+- Choose number of letters, symbols, and numbers.
+- Option to shuffle characters for a harder password.
+- Copy generated password to clipboard.
+- Responsive design using Bootstrap.
+
+---
+
+## 🛠 Technology Stack
+
+- **Frontend:** HTML, Bootstrap, Jinja2 (Flask templating)
+- **Backend:** Python, Flask
+- **Deployment:** Vercel
+- **Version Control:** Git & GitHub
+
+---
+## 🚀 How to Run Locally
+
+1. Clone the repo:
+
+```bash
+git clone https://github.com/Tanmayk03/password-generator.git
+cd password-generator
+
+2.Create and activate a virtual environment:
+
+```bash
+python -m venv venv
+.\venv\Scripts\activate  # Windows
+source venv/bin/activate  # Mac/Linux
+
+3. Install dependencies:
+
+```bash
+pip install -r requirements.txt
+
+4. Run the app:
+
+```bash
+python api\index.py
+
+5. Open your browser at: http://127.0.0.1:5000/
+
+## 📦 Deployment
+
+This project is deployed on Vercel:
+
+Production URL: https://password-generator-git-main-tanmays-projects-0858f5c5.vercel.app
+
+
