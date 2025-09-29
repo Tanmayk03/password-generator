@@ -1,47 +1,42 @@
 import random
 from flask import Flask, render_template, request
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='../templates', static_folder='../static')
 
 letters = list("abcdefghijklmnopqrstuvwxyz")
 numbers = list("0123456789")
 symbols = list("!#$%&()*+")
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route("/", methods=["GET", "POST"])
 def index():
     nr_letters = nr_symbols = nr_numbers = 0
     password = None
     error = None
 
-    if request.method == 'POST':
+    if request.method == "POST":
         try:
-            nr_letters = int(request.form.get('nr_letters', 0))
-            nr_symbols = int(request.form.get('nr_symbols', 0))
-            nr_numbers = int(request.form.get('nr_numbers', 0))
+            nr_letters = int(request.form.get("nr_letters", 0))
+            nr_symbols = int(request.form.get("nr_symbols", 0))
+            nr_numbers = int(request.form.get("nr_numbers", 0))
         except ValueError:
             error = "Please enter valid numbers."
-            return render_template('index.html', error=error, password=None,
+            return render_template("index.html", error=error, password=None,
                                    nr_letters=nr_letters, nr_symbols=nr_symbols, nr_numbers=nr_numbers)
 
-        password_list = []
-        for _ in range(nr_letters):
-            password_list.append(random.choice(letters))
-        for _ in range(nr_symbols):
-            password_list.append(random.choice(symbols))
-        for _ in range(nr_numbers):
-            password_list.append(random.choice(numbers))
+        password_list = [random.choice(letters) for _ in range(nr_letters)]
+        password_list += [random.choice(symbols) for _ in range(nr_symbols)]
+        password_list += [random.choice(numbers) for _ in range(nr_numbers)]
 
-        random.shuffle(password_list)
+        # Shuffle if checkbox is checked
+        if request.form.get("shuffle") == "on":
+            random.shuffle(password_list)
+
         password = "".join(password_list)
 
-    return render_template('index.html', password=password, error=error,
+    return render_template("index.html", password=password, error=error,
                            nr_letters=nr_letters, nr_symbols=nr_symbols, nr_numbers=nr_numbers)
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
-
-        
 # Easy Level
 # password = ""
 # for char in range(1, nr_letters + 1):
